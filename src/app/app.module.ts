@@ -21,6 +21,8 @@ import{ AngularFireModule } from '@angular/fire';
 import{ AngularFireDatabaseModule } from '@angular/fire/database';
 import{ AngularFireAuthModule} from '@angular/fire/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule} from 'ng2-validation'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +41,7 @@ import {AuthService} from './auth.service';
 import {AuthGuardService} from './auth-guard.service';
 import {UserService} from './user.service';
 import {CategoryService} from './category.service';
+import {ProductService} from './product.service';
 import {AdminAuthGuardService} from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 
@@ -63,14 +66,18 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    CustomFormsModule,
+    ReactiveFormsModule
   ],
   providers:  [
     AuthService,
     AuthGuardService,
     UserService,
     AdminAuthGuardService,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

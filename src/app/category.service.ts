@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class CategoryService {
   aflCategories: AngularFireList<any>;
+  
   constructor(private db: AngularFireDatabase) {}
 
    getCategories(){

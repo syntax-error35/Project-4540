@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 
+
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { ShoppingCartComponent } from "./shopping-cart/ShoppingCartComponent";
@@ -15,10 +16,13 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [];
 
 @NgModule({
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
   {path :'',component: HomeComponent},
   {path :'products',component: ProductComponent},
@@ -29,14 +33,20 @@ const routes: Routes = [];
   {path :'order-success',component: OrderSuccessComponent, canActivate : [AuthGuardService]},
   {path :'my-orders',component: MyOrdersComponent, canActivate : [AuthGuardService]},
 
-  {
-    path :'admin/product',
-    component: AdminProductsComponent,  
-    canActivate : [AuthGuardService,AdminAuthGuardService]
-  },
+  
   {
     path :'admin/product/new',
     component: ProductFormComponent,  
+    canActivate : [AuthGuardService,AdminAuthGuardService]
+  },
+  {
+    path :'admin/product/:id',
+    component: ProductFormComponent,  
+    canActivate : [AuthGuardService,AdminAuthGuardService]
+  },
+  {
+    path :'admin/product',
+    component: AdminProductsComponent,  
     canActivate : [AuthGuardService,AdminAuthGuardService]
   },
   {
