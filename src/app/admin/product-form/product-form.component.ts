@@ -4,6 +4,7 @@ import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -22,6 +23,9 @@ import { Router, ActivatedRoute } from '@angular/router';
     private db: AngularFireDatabase
   ) {
     this.categories$ = categoryService.getCategories();
+
+    let id= this.route.snapshot.paramMap.get('id');
+if(id) this.productService.get(id).valueChanges().pipe(take(1)).subscribe(p=> this.product = p);
   }
 
   save(product){
